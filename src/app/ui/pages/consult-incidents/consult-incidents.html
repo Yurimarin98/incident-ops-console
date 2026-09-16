@@ -1,0 +1,141 @@
+<div class="container py-4">
+ 
+  
+    
+    <!-- SECCIÓN DE FILTROS Y BÚSQUEDA -->
+    <div class="card shadow-sm border-0 mb-4">
+      <div class="card-body">
+        <div class="row g-3">
+          <!-- Búsqueda -->
+          <div class="col-md-4">
+            <label class="form-label small fw-bold text-muted">Buscar (ID, Título, Servicio)</label>
+            <input 
+              type="text" 
+              class="form-control form-control-sm" 
+              placeholder="Ej. Checkout o Falla...">
+          </div>
+ 
+          <!-- Filtro Severidad -->
+          <div class="col-md-3">
+            <label class="form-label small fw-bold text-muted">Severidad</label>
+            <select 
+              class="form-select form-select-sm" >
+              <option value="ALL">Todas las severidades</option>
+              <option value="CRITICAL">Critical</option>
+              <option value="HIGH">High</option>
+              <option value="MEDIUM">Medium</option>
+            </select>
+          </div>
+ 
+          <!-- Filtro Estado -->
+          <div class="col-md-3">
+            <label class="form-label small fw-bold text-muted">Estado</label>
+            <select 
+              class="form-select form-select-sm" >
+              <option value="ALL">Todos los estados</option>
+              <option value="OPEN">Open</option>
+              <option value="IN_PROGRESS">In Progress</option>
+              <option value="RESOLVED">Resolved</option>
+            </select>
+          </div>
+ 
+          <!-- Selector de cantidad de elementos dinámicos -->
+          <div class="col-md-2">
+            <label class="form-label small fw-bold text-muted">Por página</label>
+            <select class="form-select form-select-sm" >
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- TABLA DE INCIDENTES -->
+    <div class="card shadow-sm border-0">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-dark text-uppercase fs-7">
+            <tr>
+              <th>ID</th>
+              <th>Título / Servicio</th>
+              <th>Severidad</th>
+              <th>Estado</th>
+              <th>Fecha Creación</th>
+              <th class="text-end">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- @for (incident of paginatedIncidents(); track incident.id) {
+              <tr>
+                <td class="fw-bold text-secondary">#{{ incident.id }}</td>
+                <td>
+                  <span class="d-block fw-semibold text-dark">{{ incident.title }}</span>
+                  <span class="badge bg-light text-dark border mt-1">{{ incident.service }}</span>
+                </td>
+                <td>
+                  <span class="badge" [ngClass]="{
+                    'bg-danger': incident.severity === 'CRITICAL',
+                    'bg-warning text-dark': incident.severity === 'HIGH',
+                    'bg-info text-dark': incident.severity === 'MEDIUM'
+                  }">
+                    {{ incident.severity }}
+                  </span>
+                </td>
+                <td>
+                  <span class="badge" [ngClass]="{
+                    'bg-primary': incident.status === 'OPEN',
+                    'bg-secondary': incident.status === 'IN_PROGRESS',
+                    'bg-success': incident.status === 'RESOLVED'
+                  }">
+                    {{ incident.status }}
+                  </span>
+                </td>
+                <td class="text-muted small">
+                  {{ incident.createdAt | date:'short' }}
+                </td>
+                <td class="text-end">
+                  <button class="btn btn-sm btn-outline-primary">Ver detalle</button>
+                </td>
+              </tr>
+            } @empty {
+              <tr>
+                <td colspan="6" class="text-center py-4 text-muted">
+                  No se encontraron incidentes que coincidan con los filtros.
+                </td>
+              </tr>
+            } -->
+          </tbody>
+        </table>
+      </div>
+ 
+      <!-- PAGINACIÓN DINÁMICA -->
+      <!-- <div class="card-footer bg-white d-flex justify-content-between align-items-center py-3">
+        <span class="text-muted small">
+          Mostrando <strong>{{ paginatedIncidents().length }}</strong> de <strong>{{ filteredIncidents().length }}</strong> incidentes filtrados
+        </span>
+ 
+        <nav>
+          <ul class="pagination pagination-sm mb-0">
+            <li class="page-item" [class.disabled]="currentPage() === 1">
+              <button class="page-link" (click)="setPage(currentPage() - 1)">Anterior</button>
+            </li>
+            
+            <li class="page-item disabled">
+              <span class="page-link bg-light text-dark">Página {{ currentPage() }} de {{ totalPages() }}</span>
+            </li>
+ 
+            <li class="page-item" [class.disabled]="currentPage() === totalPages()">
+              <button class="page-link" (click)="setPage(currentPage() + 1)">Siguiente</button>
+            </li>
+          </ul>
+        </nav>
+      </div> -->
+ 
+    </div>
+ 
+  
+ 
+</div>
+ 
